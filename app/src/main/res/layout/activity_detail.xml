@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:bind="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable name="bar" type="net.azarquiel.retrofitcajonbindig.model.Bar"/>
+    </data>
+<ScrollView
+    bind:background="@color/colorMalva"
+    bind:layout_width="match_parent"
+    bind:layout_height="match_parent">
+    <LinearLayout
+        bind:layout_width="match_parent"
+        bind:layout_height="match_parent"
+        bind:orientation="vertical"
+        bind:padding="4dp"
+        tools:context=".view.DetailActivity">
+
+        <ImageView
+            bind:id="@+id/ivcardetail"
+            bind:layout_width="320dp"
+            bind:layout_height="200dp"
+            bind:layout_gravity="center"
+            app:imageUrl="@{bar.idbar}"/>
+        <TextView bind:layout_height="wrap_content" bind:textColor="@color/colorAzulo" bind:layout_width="match_parent" bind:gravity="center" bind:id="@+id/tvnombrecardetail" bind:text="@{bar.nombrebar}" bind:textStyle="bold" bind:paddingTop="5dp" bind:textSize="30sp"/>
+        <TextView bind:layout_height="wrap_content" bind:textColor="@color/colorAzulo" bind:layout_width="match_parent" bind:id="@+id/tvdescripciondet" bind:text="@{bar.descripcion}" bind:paddingTop="10dp"/>
+
+        <TextView
+            bind:id="@+id/textView9"
+            bind:layout_width="match_parent"
+            bind:layout_height="wrap_content"
+            bind:paddingTop="10dp"
+            bind:textColor="@color/colorAzulo"
+            bind:textStyle="bold" />
+        <TextView bind:layout_height="wrap_content" bind:textColor="@color/colorAzulo" bind:layout_width="match_parent" bind:id="@+id/tvdirecciondet" bind:text="@{bar.direccion}" bind:paddingTop="10dp"/>
+
+        <TextView
+            bind:id="@+id/textView5"
+            bind:layout_width="match_parent"
+            bind:layout_height="wrap_content"
+            bind:paddingTop="10dp"
+            bind:textColor="@color/colorAzulo"
+            bind:textStyle="bold" />
+        <TextView bind:layout_height="wrap_content" bind:textColor="@color/colorAzulo" bind:layout_width="match_parent" bind:id="@+id/tvespecialidadesdet" bind:text="@{bar.especialidad}" bind:paddingTop="10dp"/>
+
+        <TextView
+            bind:id="@+id/textView7"
+            bind:layout_width="match_parent"
+            bind:layout_height="wrap_content"
+            bind:paddingTop="10dp"
+            bind:textColor="@color/colorAzulo"
+            bind:textStyle="bold" />
+        <TextView bind:layout_height="wrap_content" bind:textColor="@color/colorAzulo" bind:layout_width="match_parent" bind:id="@+id/tvrecomendacionesdet" bind:text="@{bar.recomendacion}" bind:paddingTop="10dp"/>
+
+    </LinearLayout>
+</ScrollView>
+</layout>
