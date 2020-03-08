@@ -1,7 +1,6 @@
 
 import net.azarquiel.carsapp.model.Coche
-import net.azarquiel.retrofitcajonbindig.api.WebAccess
-import net.azarquiel.retrofitcajonbindig.model.Bar
+import net.azarquiel.carsapp.api.WebAccess
 
 /**
  * Created by pacopulido on 04/02/2019.
@@ -9,27 +8,29 @@ import net.azarquiel.retrofitcajonbindig.model.Bar
 
 
 class MainRepository() {
-    val service = WebAccess.barService
+    val service = WebAccess.carService
 
-    suspend fun getDataBares(): List<Coche> {
-        val webResponse = service.getDataBares().await()
+    suspend fun getDataCoches(): List<Coche> {
+        val webResponse = service.getDataCar().await()
         if (webResponse.isSuccessful) {
-            return webResponse.body()!!.bares
+            return webResponse.body()!!.coches
         }
         return emptyList()
     }
 
     suspend fun saveCar(
-        nombrebar: String,
-        direccion: String,
-        municipio: String,
-        provincia: String
-    ): Bar? {
-        var bar: Bar? = null
-        val webResponse = service.saveBar(nombrebar, direccion, municipio, provincia).await()
+        modelo: String,
+        kilometros: String,
+        ano: String,
+        precio: String,
+        combustible: String,
+        potencia: String
+    ): Coche? {
+        var coche: Coche? = null
+        val webResponse = service.saveCar(modelo, kilometros, ano, precio, combustible, potencia).await()
         if (webResponse.isSuccessful) {
-            bar = webResponse.body()!!.bar
+            coche = webResponse.body()!!.coche
         }
-        return bar
+        return coche
     }
 }

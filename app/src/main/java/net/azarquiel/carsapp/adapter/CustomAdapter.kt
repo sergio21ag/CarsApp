@@ -33,8 +33,8 @@ class CustomAdapter(val context: Context,
         return dataList.size
     }
 
-    internal fun setBares(bares: List<Coche>) {
-        this.dataList = bares
+    internal fun setCoches(coches: List<Coche>) {
+        this.dataList = coches
         notifyDataSetChanged()
     }
 

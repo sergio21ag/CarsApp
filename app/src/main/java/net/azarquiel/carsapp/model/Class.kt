@@ -3,25 +3,13 @@ package net.azarquiel.carsapp.model
 import java.io.Serializable
 
 data class Coche(
-    var idbar: Int,
-    var nombrebar: String,
-    var nombrelogo: String,
-    var direccion: String,
-    var latitud: String,
-    var longitud: String,
-    var municipio: String,
-    var provincia: String,
-    var codigopostal: String,
-    var telefono: String,
-    var descripcion: String,
-    var especialidad: String,
-    var recomendacion: String,
-    var web: String,
-    var twitter: String,
-    var facebook: String,
-    var google: String,
-    var tripadvisor: String,
-    var valormedio: String
+    var idcoche: Int,
+    var modelo: String,
+    var kilometros: String,
+    var ano: String,
+    var precio: String,
+    var combustible: String,
+    var potencia: String
 ): Serializable
 
 data class Usuario (
@@ -30,15 +18,19 @@ data class Usuario (
     var pass: String
 ):Serializable
 
-
-data class Puntos (
-    var id: Int,
-    var idusuario: Int,
-    var idbar: Int,
-    var puntos: Int
+data class Favoritos (
+    var idcoche: Int,
+    var idusuario: Int
 )
 
-data class Provincia (
-    var provincia: String
+data class Modelo (
+    var modelo: String
 )
 
+data class Respuesta (
+    val coche: Coche,
+    val modelo: List<Modelo>,
+    val coches: List<Coche>,
+    val usuario: Usuario,
+    val favoritos: Favoritos
+)

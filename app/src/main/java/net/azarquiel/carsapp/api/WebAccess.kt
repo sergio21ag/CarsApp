@@ -1,4 +1,4 @@
-package net.azarquiel.retrofitcajonbindig.api
+package net.azarquiel.carsapp.api
 
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import retrofit2.Retrofit
@@ -10,14 +10,14 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object WebAccess {
 
-    val barService : BarService by lazy {
+    val carService : CarService by lazy {
 
         val retrofit = Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(CoroutineCallAdapterFactory())
-            .baseUrl("http://www.ies-azarquiel.es/paco/apibar/")
+            .baseUrl("localhost/apicoches/")
             .build()
 
-        return@lazy retrofit.create(BarService::class.java)
+        return@lazy retrofit.create(CarService::class.java)
     }
 }
