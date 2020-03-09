@@ -10,7 +10,7 @@ import kotlinx.android.synthetic.main.row.view.*
 import net.azarquiel.carsapp.model.Coche
 
 /**
- * Created by pacopulido on 9/10/18.
+ * Created by pacopulido on i9/i10/18.
  */
 class CustomAdapter(val context: Context,
                     val layout: Int

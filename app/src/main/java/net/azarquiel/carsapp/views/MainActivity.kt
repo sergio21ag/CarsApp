@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.LinearLayout
 import android.widget.SearchView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -14,15 +15,20 @@ import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.navigation.NavigationView
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
+import kotlinx.android.synthetic.main.nav_header_main.view.*
 import net.azarquiel.carsapp.R
 import net.azarquiel.carsapp.adapter.CustomAdapter
 import net.azarquiel.carsapp.model.Coche
 import net.azarquiel.carsapp.viewmodel.MainViewModel
 import net.azarquiel.retrofitcajonbindig.views.DetailActivity
 
-class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelectedListener, SearchView.OnQueryTextListener {
+class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, SearchView.OnQueryTextListener {
     private lateinit var searchView: SearchView
     private lateinit var viewModel: MainViewModel
     private lateinit var adapter: CustomAdapter
@@ -79,7 +85,7 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
                 Toast.makeText(this,"Registro", Toast.LENGTH_LONG).show()
             }
             R.id.nav_acercade -> {
-                Toast.makeText(this,"A cerca de", Toast.LENGTH_LONG).show()
+                Toast.makeText(this,"Acerca de", Toast.LENGTH_LONG).show()
             }
         }
         drawer_layout.closeDrawer(GravityCompat.START)
@@ -109,10 +115,10 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
 
     private fun getCoches() {
         viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
-        viewModel.getDataBares().observe(this, Observer { it ->
+        viewModel.getDataCoches().observe(this, Observer { it ->
             it?.let{
                 coches=it
-                adapter.setBares(coches)
+                adapter.setCoches(coches)
             }
         })
 
@@ -140,7 +146,7 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
     // ************* <Filtro> ************
     override fun onQueryTextChange(query: String): Boolean {
         val original = ArrayList<Coche>(coches)
-        adapter.setBares(original.filter { bar -> bar.nombrecar.contains(query) })
+        adapter.setCoches(original.filter { coches -> coches.modelo.contains(query) })
         return false
     }
 
